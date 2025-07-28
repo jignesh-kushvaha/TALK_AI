@@ -1,0 +1,60 @@
+/* ServiceCard Component Styles */
+.service-card {
+  width: 320px;
+  margin: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: white;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-card .ant-card-head {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-bottom: none;
+}
+
+.service-card .ant-card-head-title {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.service-card .ant-card-body {
+  padding: 1.5rem;
+}
+
+.service-card-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.service-card-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.service-card-button:hover {
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+    background: linear-gradient(135deg, #667eea8c 0%, #764ba2a7 100%) !important;
+  /* color: #fff !important; */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .service-card {
+    width: 280px;
+    margin: 0.5rem;
+  }
+}

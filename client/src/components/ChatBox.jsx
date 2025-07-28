@@ -3,6 +3,7 @@ import { Input, Button, List, Typography, Card } from "antd";
 import { UserOutlined, RobotOutlined, SendOutlined } from "@ant-design/icons";
 import { sendMessageToAI } from "../api/openai";
 import { notifyError } from  "../utlis/notify.js";
+import "./ChatBox.css";
 
 const { Text } = Typography;
 
@@ -34,30 +35,38 @@ const ChatBox = () => {
   return (
     <Card
       title="🧠 English Practice with AI"
-      style={{ maxWidth: 700, margin: "2rem auto", borderRadius: "16px" }}
+      className="chat-container"
     >
       <List
         dataSource={chatLog}
         renderItem={(msg) => (
-          <List.Item>
+          <List.Item className="message-item">
             <List.Item.Meta
               avatar={
                 msg.sender === "user" ? (
-                  <UserOutlined style={{ fontSize: 20 }} />
+                  <UserOutlined className="user-avatar" />
                 ) : (
-                  <RobotOutlined style={{ fontSize: 20, color: "#52c41a" }} />
+                  <RobotOutlined className="ai-avatar" />
                 )
               }
               title={msg.sender === "user" ? "You" : "AI"}
-              description={<Text>{msg.text}</Text>}
+              description={
+                <>
+                  {msg.text.split("\n").map((line, index) => (
+                    <Text key={index} className="message-text">
+                      {line}
+                    </Text>
+                  ))}
+                </>
+              }
             />
           </List.Item>
         )}
-        style={{ maxHeight: 400, overflowY: "auto", marginBottom: "1rem" }}
+        className="chat-messages"
       />
-      <Input.Group compact>
+      <div className="input-container">
         <Input
-          style={{ width: "85%" }}
+          className="message-input"
           placeholder="Type your sentence..."
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
@@ -68,10 +77,11 @@ const ChatBox = () => {
           icon={<SendOutlined />}
           loading={loading}
           onClick={handleSend}
+          className="send-button"
         >
           Send
         </Button>
-      </Input.Group>
+      </div>
     </Card>
   );
 };
